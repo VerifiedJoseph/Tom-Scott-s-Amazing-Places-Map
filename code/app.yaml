@@ -1,0 +1,36 @@
+application: amazing-places-1250
+version: 2
+runtime: php55
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+  
+- url: /css
+  static_dir: css
+  
+- url: /js
+  static_dir: js
+  
+- url: /images
+  static_dir: images
+
+- url: /file
+  script: file-load.php
+  secure: always
+  
+- url: /admin/
+  script: admin.php
+  secure: always
+  login: admin  
+ 
+- url: /
+  script: index.php
+  secure: always
+  
+- url: /.*
+  script: 404.php
+  secure: always
