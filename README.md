@@ -1,4 +1,4 @@
-# Tom-Scott-s-Amazing-Places-Map
+# Tom Scott's Amazing Places Map
 An unofficial website for Tom Scott's amazing places video series
 
 ### Dependencies
