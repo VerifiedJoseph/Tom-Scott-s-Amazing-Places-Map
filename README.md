@@ -3,6 +3,8 @@ An unofficial website for Tom Scott's amazing places video series
 
 ### Dependencies
 - Google App Engine
+- YouTube API (v3)
+- Google Maps JavaScript API (v3)
 - JQuery 2.2.0+
 - JQuery.dotdotdot
 
