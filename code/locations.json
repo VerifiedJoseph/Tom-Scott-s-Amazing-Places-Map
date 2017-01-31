@@ -1,9 +1,44 @@
 {
   "details": {
     "Created": "2016-03-14",
-    "last_mod": "2016-10-10"
+    "last_mod": "2017-01-31"
   },
   "videos": [
+    {
+      "title": "Elia: The World's Most Frustrating Work of Art",
+      "id": "4gE9qxX5VjE",
+      "lat": "56.127222",
+      "long": "9.026944",
+      "added": "2017-01-31"
+    },
+    {
+      "title": "The Confusing Borders of Lake Constance",
+      "id": "KwHj4lj3F-k",
+      "lat": "47.6477416",
+      "long": "9.3062074",
+      "added": "2017-01-02"
+    },
+    {
+      "title": "Stopping a Disastrous Plan with Science: the Bay Model",
+      "id": "i70wkxmumAw",
+      "lat": "37.8632927",
+      "long": "-122.494119",
+      "added": "2016-12-01"
+    },
+    {
+      "title": "Arson as a Christmas Tradition: The G\u00e4vle Goat",
+      "id": "-zjJpFYtx9s",
+      "lat": "60.674839",
+      "long": "17.142034",
+      "added": "2016-12-01"
+    },
+    {
+      "title": "The World's Most Dangerous Path Isn't So Dangerous Any More",
+      "id": "8cICu9HtGhQ",
+      "lat": "36.915833",
+      "long": "-4.772778",
+      "added": "2016-10-17"
+    },
     {
       "title": "Pod Cars of the Past and Future: The Morgantown PRT",
       "id": "iaSaWfw07Sw",
