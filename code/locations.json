@@ -1,9 +1,16 @@
 {
   "details": {
     "created": "2016-03-14",
-    "last_mod": "2017-05-29"
+    "last_mod": "2017-06-12"
   },
   "videos": [
+    {
+      "title": "The Museum of Failure",
+      "id": "PfdBTsyrqaI",
+      "lat": "56.0405195",
+      "long": "12.7000565",
+      "added": "2017-06-12"
+    },
     {
       "title": "The Poison Garden of Alnwick",
       "id": "jGo9gYypQc8",
