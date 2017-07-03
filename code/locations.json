@@ -1,9 +1,16 @@
 {
   "details": {
     "created": "2016-03-14",
-    "last_mod": "2017-06-12"
+    "last_mod": "2017-07-03"
   },
   "videos": [
+    {
+      "title": "An Elevator That Actually Goes Sideways",
+      "id": "kdTsbFS4xmI",
+      "lat": "48.1791986",
+      "long": "8.623306",
+      "added": "2017-07-03"
+    },
     {
       "title": "The Museum of Failure",
       "id": "PfdBTsyrqaI",
