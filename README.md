@@ -2,11 +2,9 @@
 An unofficial website for Tom Scott's amazing places video series
 
 ### Dependencies
-- Google App Engine
-- YouTube API (v3)
-- Google Maps JavaScript API (v3)
-- JQuery 2.2.0+
-- JQuery.dotdotdot
+- [Google Maps JavaScript API (version 3)](https://developers.google.com/maps/documentation/javascript/)
+- [JQuery 3.2.1](https://jquery.com/)
+- [JQuery.dotdotdot](https://github.com/FrDH/jQuery.dotdotdot) with the edits from [pull request #124](https://github.com/FrDH/jQuery.dotdotdot/pull/124/files).
 
 ## License
 
@@ -14,4 +12,4 @@ Code in this repository is licensed under the GNU General Public License Version
 
 ## Disclaimer
 
-This is a unofficial website and is not run by the [Tom Scott](https://www.tomscott.com/).
+This is a unofficial and is not run by the [Tom Scott](https://www.tomscott.com/).
