@@ -12,4 +12,4 @@ Code in this repository is licensed under the GNU General Public License Version
 
 ## Disclaimer
 
-This is a unofficial and is not run by the [Tom Scott](https://www.tomscott.com/).
+This is a unofficial and is not run by [Tom Scott](https://www.tomscott.com/).
