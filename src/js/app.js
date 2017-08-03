@@ -3,139 +3,141 @@
 "use strict";
 
 jQuery(function ($) {
+	
 	var map,
-		markers = [], // Array of map markers  
+		markers = [], // Array of map markers 
 		infoWindow,
 		url = $("#map-container").attr("data-url"),
 		currentMarker = -1, // ID of the currently open info window (marker ID)
 		mapCenter;
 
-	function initialize(locations) { // Creates map and set map markers
+	/**
+	* Create a map from the JSON data
+	* @param {object} locations
+	*/
+	function initMap(locations) { // Creates map and set map markers
 
 		var marker, i,
-			mapOptions = {
-				center: new google.maps.LatLng('54.9000', '25.3167'),
-				zoom: 4,
+			mapOptions = { // Map Options
+				center: new google.maps.LatLng('54.9000', '25.3167'), // Default map location
+				zoom: 4, // Default zoom
 				maxZoom: 8,
 				streetViewControl: false,
 				mapTypeId: google.maps.MapTypeId.ROADMAP,
 				mapTypeControl: false
 			};
-
+		
+		// New map
 		map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
+		// New infoWindow
 		infoWindow = new google.maps.InfoWindow();
 
-		for (i = 0; i < Object.keys(locations).length; i++) { // Loop through each video and add map marker and click event 
+		// Loop through each video, adding a map markers and click events
+		for (i = 0; i < Object.keys(locations).length; i += 1) {
 
+			// New marker
 			marker = new google.maps.Marker({
 				position: new google.maps.LatLng(locations[i].lat, locations[i].long),
 				map: map,
 				title: locations[i].title
 			});
 
+			// Marker click event listener
 			google.maps.event.addListener(marker, 'click', (function (marker, i) {
 				return function () {
-					// infoWindow content
+					
+					// info window content
 					var content = '<div class="map-video"><iframe src="https://www.youtube.com/embed/' + locations[i].id + '" frameborder="0" allowfullscreen></iframe></div>';
-
-					currentMarker = i;
-					console.log(currentMarker);
-
+					
 					infoWindow.setContent(content);
 					infoWindow.open(map, marker);
-
 				};
 			})(marker, i));
-
-			markers.push(marker); // Add arrays together
+			
+			// Add maker to map markers array
+			markers.push(marker);
 
 		}
 
-		mapCenter = map.getCenter();
-
 	}
 
-	function videoClick(markerID) { // Map marker click event
-		google.maps.event.trigger(markers[markerID], 'click');
-	}
+	/**
+	* Create a grid showing all the videos from JSON
+	* @param {object} videos
+	*/
+	function videoGrid(videos) {
 
-	function videoGrid(videos) { // Creates page video grid
-
-		var marker,
-			html,
+		var html,
 			i;
 
-		// Add badge number 
-		$('.badge').append(Object.keys(videos).length);
+		 // Loop through each video and add it to the grid
+		for (i = 0; i < Object.keys(videos).length; i += 1) {
 
-		for (i = 0; i < Object.keys(videos).length; i++) { // Loop through each video and add map marker and click event 
-
-			html = '<div class="col-sm-4 col-md-3 col-lg-2 video"><div class="thumbnail" data-map-id="' + i + '"><img title="' + videos[i].title + '" class="video-thumbnail" src="https://i.ytimg.com/vi/' + videos[i].id + '/mqdefault.jpg" title="' + videos[i].title + '"><div title="' + videos[i].title + '" class="caption"><span>' + videos[i].title + '</span></div></div>';
+			// http://shoelace.io/#7084dfaae9239b22106fd5d7ca503f17
+			html = '<div class="col-xs-6 col-sm-4 col-lg-2 video"><div class="thumbnail" data-map-id="' + i + '">'
+				+ '<img title="' + videos[i].title + '" class="video-thumbnail" src="https://i.ytimg.com/vi/' + videos[i].id + '/mqdefault.jpg" title="' + videos[i].title + '">' // Small screens
+				+ '<div title="' + videos[i].title + '" class="caption"><span>' + videos[i].title + '</span></div></div>';
 			$(".video-box").append(html);
 		}
 	}
 
+	/**
+	* Ajax Setup
+	*/
 	$.ajaxSetup({
 		dataType: 'json' // Set data type
 	});
-
-	$.getJSON("/GitHub/Tom-Scott-s-Amazing-Places-Map/src/videos.json")
+	
+	/*
+		Run request
+	*/
+	$.getJSON("videos.json")
 
 		.done(function (data) {
-			console.log("Fetched Video list");
-			//console.log(data);
+			console.log("Fetched video list");
 
-			google.maps.event.addDomListener(window, 'load', initialize(data.videos)); // 
+			// Add badge number 
+			$('.badge').append(Object.keys(data.videos).length);
+		
+			// Create Map
+			initMap(data.videos);
 
 			// Create video gird
 			videoGrid(data.videos);
 
+			// Hide overflow text
 			$(".caption").dotdotdot({
 				ellipsis: '... ',
 				wrap: 'word',
 				watch: "window"
 			});
-
-			$('.thumbnail').on('click', function () { // Show map marker 
+		
+			// Thumbanil click event (open info window for video on map)
+			$('.thumbnail').on('click', function () {
+				
 				var markerID = $(this).attr("data-map-id");
-				videoClick(markerID);
-
+				
+				// Trigger marker event
+				google.maps.event.trigger(markers[markerID], 'click');
+				
+				// Scroll to page top.
 				$("body,html").animate({
 					scrollTop: 0
 				}, 800);
 			});
-
-			google.maps.event.addDomListener(window, "resize", function () { // On window resize and center map and reopen current open info window
-				map.setCenter(mapCenter);
-
-				console.log("current #" + currentMarker);
-
-				if (currentMarker !== -1) {
-					var beforeCloseNumber = currentMarker; // Backup currentMarker as infoWindow.close(); clears it 
-					infoWindow.close();
-
-					currentMarker = beforeCloseNumber; // Set currentMarker again
-
-					setTimeout( // Open the info window after a 500ms wait 
-						function () {
-							google.maps.event.trigger(markers[currentMarker], 'click');
-						}, 500
-					);
-
-				}
+			
+			// Hide loading screen on map load.
+			google.maps.event.addListenerOnce(map, 'idle', function () {
+				$('#loading').fadeOut('slow');
 			});
-
-			google.maps.event.addListener(infoWindow, 'closeclick', function () { // On infoWindow close
-				currentMarker = -1; // Set currentMarker
-			});
-
+		
 		})
 
-		.fail(function () { // JSON file failed to load 
+		.fail(function () {
 			$('#error-note').show();
-			console.log("Video list fetched : false");
+			$('#loading').fadeOut('slow');
+			console.log("Failed to fetch video list");
 		});
-
 
 });

@@ -1,1 +1,652 @@
-!function(t,e){"use strict";function n(t,e,n){var r=t.children(),o=!1;t.empty();for(var i=0,d=r.length;i<d;i++){var l=r.eq(i);if(t.append(l),n&&t.append(n),a(t,e)){l.remove(),o=!0;break}n&&n.detach()}return o}function r(e,n,i,d,l){var s=!1;return e.contents().detach().each(function(){var c=this,u=t(c);if(void 0===c)return!0;if(u.is("script, .dotdotdot-keep"))e.append(u);else{if(s)return!0;e.append(u),!l||u.is(d.after)||u.find(d.after).length||e[e.is("a, table, thead, tbody, tfoot, tr, col, colgroup, object, embed, param, ol, ul, dl, blockquote, select, optgroup, option, textarea, script, style")?"after":"append"](l),a(i,d)&&(s=3==c.nodeType?o(u,n,i,d,l):r(u,n,i,d,l)),s||l&&l.detach()}}),n.addClass("is-truncated"),s}function o(e,n,r,o,d){var c=e[0];if(!c)return!1;var h=s(c),f=-1!==h.indexOf(" ")?" ":"　",p="letter"==o.wrap?"":f,g=h.split(p),v=-1,w=-1,m=0,y=g.length-1;if(o.fallbackToLetter&&0===m&&0===y&&(p="",y=(g=h.split(p)).length-1),o.maxLength)l(c,h=i(h.trim().substr(0,o.maxLength),o));else{for(;m<=y&&(0!==m||0!==y);){var b=Math.floor((m+y)/2);if(b==w)break;w=b,l(c,g.slice(0,w+1).join(p)+o.ellipsis),r.children().each(function(){t(this).toggle().toggle()}),a(r,o)?(y=w,o.fallbackToLetter&&0===m&&0===y&&(p="",v=-1,w=-1,m=0,y=(g=g[0].split(p)).length-1)):(v=w,m=w)}if(-1==v||1===g.length&&0===g[0].length){var x=e.parent();e.detach();var C=d&&d.closest(x).length?d.length:0;if(x.contents().length>C?c=u(x.contents().eq(-1-C),n):(c=u(x,n,!0),C||x.detach()),c&&(h=i(s(c),o),l(c,h),C&&d)){var T=d.parent();t(c).parent().append(d),t.trim(T.html())||T.remove()}}else l(c,h=i(g.slice(0,v+1).join(p),o))}return!0}function a(t,e){return t.innerHeight()>e.maxHeight||e.maxLength&&t.text().trim().length>e.maxLength}function i(e,n){for(;t.inArray(e.slice(-1),n.lastCharacter.remove)>-1;)e=e.slice(0,-1);return t.inArray(e.slice(-1),n.lastCharacter.noEllipsis)<0&&(e+=n.ellipsis),e}function d(t){return{width:t.innerWidth(),height:t.innerHeight()}}function l(t,e){t.innerText?t.innerText=e:t.nodeValue?t.nodeValue=e:t.textContent&&(t.textContent=e)}function s(t){return t.innerText?t.innerText:t.nodeValue?t.nodeValue:t.textContent?t.textContent:""}function c(t){do{t=t.previousSibling}while(t&&1!==t.nodeType&&3!==t.nodeType);return t}function u(e,n,r){var o,a=e&&e[0];if(a){if(!r){if(3===a.nodeType)return a;if(t.trim(e.text()))return u(e.contents().last(),n)}for(o=c(a);!o;){if((e=e.parent()).is(n)||!e.length)return!1;o=c(e[0])}if(o)return u(t(o),n)}return!1}function h(e,n){return!!e&&("string"==typeof e?!!(e=t(e,n)).length&&e:!!e.jquery&&e)}function f(t){for(var e=t.innerHeight(),n=["paddingTop","paddingBottom"],r=0,o=n.length;r<o;r++){var a=parseInt(t.css(n[r]),10);isNaN(a)&&(a=0),e-=a}return e}if(!t.fn.dotdotdot){t.fn.dotdotdot=function(e){if(0===this.length)return t.fn.dotdotdot.debug('No element found for "'+this.selector+'".'),this;if(this.length>1)return this.each(function(){t(this).dotdotdot(e)});var o=this,i=o.contents();o.data("dotdotdot")&&o.trigger("destroy.dot"),o.data("dotdotdot-style",o.attr("style")||""),o.css("word-wrap","break-word"),"nowrap"===o.css("white-space")&&o.css("white-space","normal"),o.bind_events=function(){return o.on("update.dot",function(e,d){switch(o.removeClass("is-truncated"),e.preventDefault(),e.stopPropagation(),typeof l.height){case"number":l.maxHeight=l.height;break;case"function":l.maxHeight=l.height.call(o[0]);break;default:l.maxHeight=f(o)}l.maxHeight+=l.tolerance,void 0!==d&&(("string"==typeof d||"nodeType"in d&&1===d.nodeType)&&(d=t("<div />").append(d).contents()),d instanceof t&&(i=d)),(g=o.wrapInner('<div class="dotdotdot" />').children()).contents().detach().end().append(i.clone(!0)).find("br").replaceWith("  <br />  ").end().css({height:"auto",width:"auto",border:"none",padding:0,margin:0});var c=!1,u=!1;return s.afterElement&&((c=s.afterElement.clone(!0)).show(),s.afterElement.detach()),a(g,l)&&(u="children"==l.wrap?n(g,l,c):r(g,o,g,l,c)),g.replaceWith(g.contents()),g=null,t.isFunction(l.callback)&&l.callback.call(o[0],u,i),s.isTruncated=u,u}).on("isTruncated.dot",function(t,e){return t.preventDefault(),t.stopPropagation(),"function"==typeof e&&e.call(o[0],s.isTruncated),s.isTruncated}).on("originalContent.dot",function(t,e){return t.preventDefault(),t.stopPropagation(),"function"==typeof e&&e.call(o[0],i),i}).on("destroy.dot",function(t){t.preventDefault(),t.stopPropagation(),o.unwatch().unbind_events().contents().detach().end().append(i).attr("style",o.data("dotdotdot-style")||"").removeClass("is-truncated").data("dotdotdot",!1)}),o},o.unbind_events=function(){return o.off(".dot"),o},o.watch=function(){if(o.unwatch(),"window"==l.watch){var e=t(window),n=e.width(),r=e.height();e.on("resize.dot"+s.dotId,function(){n==e.width()&&r==e.height()&&l.windowResizeFix||(n=e.width(),r=e.height(),u&&clearInterval(u),u=setTimeout(function(){o.trigger("update.dot")},100))})}else c=d(o),u=setInterval(function(){if(o.is(":visible")){var t=d(o);c.width==t.width&&c.height==t.height||(o.trigger("update.dot"),c=t)}},500);return o},o.unwatch=function(){return t(window).off("resize.dot"+s.dotId),u&&clearInterval(u),o};var l=t.extend(!0,{},t.fn.dotdotdot.defaults,e),s={},c={},u=null,g=null;return l.lastCharacter.remove instanceof Array||(l.lastCharacter.remove=t.fn.dotdotdot.defaultArrays.lastCharacter.remove),l.lastCharacter.noEllipsis instanceof Array||(l.lastCharacter.noEllipsis=t.fn.dotdotdot.defaultArrays.lastCharacter.noEllipsis),s.afterElement=h(l.after,o),s.isTruncated=!1,s.dotId=p++,o.data("dotdotdot",!0).bind_events().trigger("update.dot"),l.watch&&o.watch(),o},t.fn.dotdotdot.defaults={ellipsis:"... ",wrap:"word",fallbackToLetter:!0,lastCharacter:{},tolerance:0,callback:null,after:null,height:null,watch:!1,windowResizeFix:!0,maxLength:null},t.fn.dotdotdot.defaultArrays={lastCharacter:{remove:[" ","　",",",";",".","!","?"],noEllipsis:[]}},t.fn.dotdotdot.debug=function(t){};var p=1,g=t.fn.html;t.fn.html=function(e){return void 0!=e&&!t.isFunction(e)&&this.data("dotdotdot")?this.trigger("update",[e]):g.apply(this,arguments)};var v=t.fn.text;t.fn.text=function(e){return void 0!=e&&!t.isFunction(e)&&this.data("dotdotdot")?(e=t("<div />").text(e).html(),this.trigger("update",[e])):v.apply(this,arguments)}}}(jQuery),jQuery(function(t){t(".dot-ellipsis").each(function(){var e=t(this).hasClass("dot-resize-update"),n=t(this).hasClass("dot-timer-update"),r=0,o=t(this).attr("class").split(/\s+/);t.each(o,function(t,e){var n=e.match(/^dot-height-(\d+)$/);null!==n&&(r=Number(n[1]))});var a={};n&&(a.watch=!0),e&&(a.watch="window"),r>0&&(a.height=r),t(this).dotdotdot(a)})}),jQuery(window).on("load",function(){jQuery(".dot-ellipsis.dot-load-update").trigger("update.dot")});
+/*
+ *	jQuery dotdotdot 1.8.3
+ *
+ *	Copyright (c) Fred Heusschen
+ *	www.frebsite.nl
+ *
+ *	Plugin website:
+ *	dotdotdot.frebsite.nl
+ *
+ *	Licensed under the MIT license.
+ *	http://en.wikipedia.org/wiki/MIT_License
+ */
+
+(function($, undef) {
+    'use strict';
+    if ($.fn.dotdotdot) {
+        return;
+    }
+
+    $.fn.dotdotdot = function(o) {
+        if (this.length === 0) {
+            $.fn.dotdotdot.debug('No element found for "' + this.selector + '".');
+            return this;
+        }
+        if (this.length > 1) {
+            return this.each(
+                function() {
+                    $(this).dotdotdot(o);
+                }
+            );
+        }
+
+        var $dot = this;
+        var orgContent = $dot.contents();
+
+        if ($dot.data('dotdotdot')) {
+            $dot.trigger('destroy.dot');
+        }
+
+        $dot.data('dotdotdot-style', $dot.attr('style') || '');
+        $dot.css('word-wrap', 'break-word');
+        if ($dot.css('white-space') === 'nowrap') {
+            $dot.css('white-space', 'normal');
+        }
+
+        $dot.bind_events = function() {
+            $dot.on(
+                'update.dot',
+                function(e, c) {
+                    $dot.removeClass("is-truncated");
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    switch (typeof opts.height) {
+                        case 'number':
+                            opts.maxHeight = opts.height;
+                            break;
+
+                        case 'function':
+                            opts.maxHeight = opts.height.call($dot[0]);
+                            break;
+
+                        default:
+                            opts.maxHeight = getTrueInnerHeight($dot);
+                            break;
+                    }
+
+                    opts.maxHeight += opts.tolerance;
+
+                    if (typeof c != 'undefined') {
+                        if (typeof c == 'string' || ('nodeType' in c && c.nodeType === 1)) {
+                            c = $('<div />').append(c).contents();
+                        }
+                        if (c instanceof $) {
+                            orgContent = c;
+                        }
+                    }
+
+                    $inr = $dot.wrapInner('<div class="dotdotdot" />').children();
+                    $inr.contents()
+                        .detach()
+                        .end()
+                        .append(orgContent.clone(true))
+                        .find('br')
+                        .replaceWith('  <br />  ')
+                        .end()
+                        .css({
+                            'height': 'auto',
+                            'width': 'auto',
+                            'border': 'none',
+                            'padding': 0,
+                            'margin': 0
+                        });
+
+                    var after = false,
+                        trunc = false;
+
+                    if (conf.afterElement) {
+                        after = conf.afterElement.clone(true);
+                        after.show();
+                        conf.afterElement.detach();
+                    }
+
+                    if (test($inr, opts)) {
+                        if (opts.wrap == 'children') {
+                            trunc = children($inr, opts, after);
+                        } else {
+                            trunc = ellipsis($inr, $dot, $inr, opts, after);
+                        }
+                    }
+                    $inr.replaceWith($inr.contents());
+                    $inr = null;
+
+                    if ($.isFunction(opts.callback)) {
+                        opts.callback.call($dot[0], trunc, orgContent);
+                    }
+
+                    conf.isTruncated = trunc;
+                    return trunc;
+                }
+
+            ).on(
+                'isTruncated.dot',
+                function(e, fn) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    if (typeof fn == 'function') {
+                        fn.call($dot[0], conf.isTruncated);
+                    }
+                    return conf.isTruncated;
+                }
+
+            ).on(
+                'originalContent.dot',
+                function(e, fn) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    if (typeof fn == 'function') {
+                        fn.call($dot[0], orgContent);
+                    }
+                    return orgContent;
+                }
+
+            ).on(
+                'destroy.dot',
+                function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    $dot.unwatch()
+                        .unbind_events()
+                        .contents()
+                        .detach()
+                        .end()
+                        .append(orgContent)
+                        .attr('style', $dot.data('dotdotdot-style') || '')
+                        .removeClass('is-truncated')
+                        .data('dotdotdot', false);
+                }
+            );
+            return $dot;
+        }; //	/bind_events
+
+        $dot.unbind_events = function() {
+            $dot.off('.dot');
+            return $dot;
+        }; //	/unbind_events
+
+        $dot.watch = function() {
+            $dot.unwatch();
+            if (opts.watch == 'window') {
+                var $window = $(window),
+                    _wWidth = $window.width(),
+                    _wHeight = $window.height();
+
+                $window.on(
+                    'resize.dot' + conf.dotId,
+                    function() {
+                        if (_wWidth != $window.width() || _wHeight != $window.height() || !opts.windowResizeFix) {
+                            _wWidth = $window.width();
+                            _wHeight = $window.height();
+
+                            if (watchInt) {
+                                clearInterval(watchInt);
+                            }
+                            watchInt = setTimeout(
+                                function() {
+                                    $dot.trigger('update.dot');
+                                }, 100
+                            );
+                        }
+                    }
+                );
+            } else {
+                watchOrg = getSizes($dot);
+                watchInt = setInterval(
+                    function() {
+                        if ($dot.is(':visible')) {
+                            var watchNew = getSizes($dot);
+                            if (watchOrg.width != watchNew.width ||
+                                watchOrg.height != watchNew.height) {
+                                $dot.trigger('update.dot');
+                                watchOrg = watchNew;
+                            }
+                        }
+                    }, 500
+                );
+            }
+            return $dot;
+        };
+        $dot.unwatch = function() {
+            $(window).off('resize.dot' + conf.dotId);
+            if (watchInt) {
+                clearInterval(watchInt);
+            }
+            return $dot;
+        };
+
+        var opts = $.extend(true, {}, $.fn.dotdotdot.defaults, o),
+            conf = {},
+            watchOrg = {},
+            watchInt = null,
+            $inr = null;
+
+
+        if (!(opts.lastCharacter.remove instanceof Array)) {
+            opts.lastCharacter.remove = $.fn.dotdotdot.defaultArrays.lastCharacter.remove;
+        }
+        if (!(opts.lastCharacter.noEllipsis instanceof Array)) {
+            opts.lastCharacter.noEllipsis = $.fn.dotdotdot.defaultArrays.lastCharacter.noEllipsis;
+        }
+
+
+        conf.afterElement = getElement(opts.after, $dot);
+        conf.isTruncated = false;
+        conf.dotId = dotId++;
+
+
+        $dot.data('dotdotdot', true)
+            .bind_events()
+            .trigger('update.dot');
+
+        if (opts.watch) {
+            $dot.watch();
+        }
+
+        return $dot;
+    };
+
+
+    //	public
+    $.fn.dotdotdot.defaults = {
+        'ellipsis': '... ',
+        'wrap': 'word',
+        'fallbackToLetter': true,
+        'lastCharacter': {},
+        'tolerance': 0,
+        'callback': null,
+        'after': null,
+        'height': null,
+        'watch': false,
+        'windowResizeFix': true,
+        'maxLength': null
+    };
+    $.fn.dotdotdot.defaultArrays = {
+        'lastCharacter': {
+            'remove': [' ', '\u3000', ',', ';', '.', '!', '?'],
+            'noEllipsis': []
+        }
+    };
+    $.fn.dotdotdot.debug = function(msg) {};
+
+
+    //	private
+    var dotId = 1;
+
+    function children($elem, o, after) {
+        var $elements = $elem.children(),
+            isTruncated = false;
+
+        $elem.empty();
+
+        for (var a = 0, l = $elements.length; a < l; a++) {
+            var $e = $elements.eq(a);
+            $elem.append($e);
+            if (after) {
+                $elem.append(after);
+            }
+            if (test($elem, o)) {
+                $e.remove();
+                isTruncated = true;
+                break;
+            } else {
+                if (after) {
+                    after.detach();
+                }
+            }
+        }
+        return isTruncated;
+    }
+
+    function ellipsis($elem, $d, $i, o, after) {
+        var isTruncated = false;
+
+        //	Don't put the ellipsis directly inside these elements
+        var notx = 'a, table, thead, tbody, tfoot, tr, col, colgroup, object, embed, param, ol, ul, dl, blockquote, select, optgroup, option, textarea, script, style';
+
+        //	Don't remove these elements even if they are after the ellipsis
+        var noty = 'script, .dotdotdot-keep';
+
+        $elem
+            .contents()
+            .detach()
+            .each(
+                function() {
+
+                    var e = this,
+                        $e = $(e);
+
+                    if (typeof e == 'undefined') {
+                        return true;
+                    } else if ($e.is(noty)) {
+                        $elem.append($e);
+                    } else if (isTruncated) {
+                        return true;
+                    } else {
+                        $elem.append($e);
+                        if (after && !$e.is(o.after) && !$e.find(o.after).length) {
+                            $elem[$elem.is(notx) ? 'after' : 'append'](after);
+                        }
+                        if (test($i, o)) {
+                            if (e.nodeType == 3) // node is TEXT
+                            {
+                                isTruncated = ellipsisElement($e, $d, $i, o, after);
+                            } else {
+                                isTruncated = ellipsis($e, $d, $i, o, after);
+                            }
+                        }
+
+                        if (!isTruncated) {
+                            if (after) {
+                                after.detach();
+                            }
+                        }
+                    }
+                }
+            );
+        $d.addClass("is-truncated");
+        return isTruncated;
+    }
+
+    function ellipsisElement($e, $d, $i, o, after) {
+        var e = $e[0];
+
+        if (!e) {
+            return false;
+        }
+
+        var txt = getTextContent(e),
+            space = (txt.indexOf(' ') !== -1) ? ' ' : '\u3000',
+            separator = (o.wrap == 'letter') ? '' : space,
+            textArr = txt.split(separator),
+            position = -1,
+            midPos = -1,
+            startPos = 0,
+            endPos = textArr.length - 1;
+
+
+        //	Only one word
+        if (o.fallbackToLetter && startPos === 0 && endPos === 0) {
+            separator = '';
+            textArr = txt.split(separator);
+            endPos = textArr.length - 1;
+        }
+
+        if (o.maxLength) {
+            txt = addEllipsis(txt.trim().substr(0, o.maxLength), o);
+            setTextContent(e, txt);
+        } else {
+
+            while (startPos <= endPos && !(startPos === 0 && endPos === 0)) {
+                var m = Math.floor((startPos + endPos) / 2);
+                if (m == midPos) {
+                    break;
+                }
+                midPos = m;
+
+                setTextContent(e, textArr.slice(0, midPos + 1).join(separator) + o.ellipsis);
+
+                $i.children().each(function() {
+                    $(this).toggle().toggle();
+                });
+
+                if (!test($i, o)) {
+                    position = midPos;
+                    startPos = midPos;
+                } else {
+                    endPos = midPos;
+
+                    //	Fallback to letter
+                    if (o.fallbackToLetter && startPos === 0 && endPos === 0) {
+                        separator = '';
+                        textArr = textArr[0].split(separator);
+                        position = -1;
+                        midPos = -1;
+                        startPos = 0;
+                        endPos = textArr.length - 1;
+                    }
+                }
+            }
+
+            if (position != -1 && !(textArr.length === 1 && textArr[0].length === 0)) {
+                txt = addEllipsis(textArr.slice(0, position + 1).join(separator), o);
+                setTextContent(e, txt);
+            } else {
+                var $w = $e.parent();
+                $e.detach();
+
+                var afterLength = (after && after.closest($w).length) ? after.length : 0;
+
+                if ($w.contents().length > afterLength) {
+                    e = findLastTextNode($w.contents().eq(-1 - afterLength), $d);
+                } else {
+                    e = findLastTextNode($w, $d, true);
+                    if (!afterLength) {
+                        $w.detach();
+                    }
+                }
+                if (e) {
+                    txt = addEllipsis(getTextContent(e), o);
+                    setTextContent(e, txt);
+                    if (afterLength && after) {
+                        var $parent = after.parent();
+
+                        $(e).parent().append(after);
+
+                        if (!$.trim($parent.html())) {
+                            $parent.remove();
+                        }
+                    }
+                }
+            }
+        }
+
+        return true;
+    }
+
+    function test($i, o) {
+        return ($i.innerHeight() > o.maxHeight || (o.maxLength && $i.text().trim().length > o.maxLength));
+    }
+
+    function addEllipsis(txt, o) {
+        while ($.inArray(txt.slice(-1), o.lastCharacter.remove) > -1) {
+            txt = txt.slice(0, -1);
+        }
+        if ($.inArray(txt.slice(-1), o.lastCharacter.noEllipsis) < 0) {
+            txt += o.ellipsis;
+        }
+        return txt;
+    }
+
+    function getSizes($d) {
+        return {
+            'width': $d.innerWidth(),
+            'height': $d.innerHeight()
+        };
+    }
+
+    function setTextContent(e, content) {
+        if (e.innerText) {
+            e.innerText = content;
+        } else if (e.nodeValue) {
+            e.nodeValue = content;
+        } else if (e.textContent) {
+            e.textContent = content;
+        }
+
+    }
+
+    function getTextContent(e) {
+        if (e.innerText) {
+            return e.innerText;
+        } else if (e.nodeValue) {
+            return e.nodeValue;
+        } else if (e.textContent) {
+            return e.textContent;
+        } else {
+            return "";
+        }
+    }
+
+    function getPrevNode(n) {
+        do {
+            n = n.previousSibling;
+        }
+        while (n && n.nodeType !== 1 && n.nodeType !== 3);
+
+        return n;
+    }
+
+    function findLastTextNode($el, $top, excludeCurrent) {
+        var e = $el && $el[0],
+            p;
+        if (e) {
+            if (!excludeCurrent) {
+                if (e.nodeType === 3) {
+                    return e;
+                }
+                if ($.trim($el.text())) {
+                    return findLastTextNode($el.contents().last(), $top);
+                }
+            }
+            p = getPrevNode(e);
+            while (!p) {
+                $el = $el.parent();
+                if ($el.is($top) || !$el.length) {
+                    return false;
+                }
+                p = getPrevNode($el[0]);
+            }
+            if (p) {
+                return findLastTextNode($(p), $top);
+            }
+        }
+        return false;
+    }
+
+    function getElement(e, $i) {
+        if (!e) {
+            return false;
+        }
+        if (typeof e === 'string') {
+            e = $(e, $i);
+            return (e.length) ?
+                e :
+                false;
+        }
+        return !e.jquery ?
+            false :
+            e;
+    }
+
+    function getTrueInnerHeight($el) {
+        var h = $el.innerHeight(),
+            a = ['paddingTop', 'paddingBottom'];
+
+        for (var z = 0, l = a.length; z < l; z++) {
+            var m = parseInt($el.css(a[z]), 10);
+            if (isNaN(m)) {
+                m = 0;
+            }
+            h -= m;
+        }
+        return h;
+    }
+
+
+    //	override jQuery.html
+    var _orgHtml = $.fn.html;
+    $.fn.html = function(str) {
+        if (str != undef && !$.isFunction(str) && this.data('dotdotdot')) {
+            return this.trigger('update', [str]);
+        }
+        return _orgHtml.apply(this, arguments);
+    };
+
+
+    //	override jQuery.text
+    var _orgText = $.fn.text;
+    $.fn.text = function(str) {
+        if (str != undef && !$.isFunction(str) && this.data('dotdotdot')) {
+            str = $('<div />').text(str).html();
+            return this.trigger('update', [str]);
+        }
+        return _orgText.apply(this, arguments);
+    };
+
+
+})(jQuery);
+
+/*
+
+## Automatic parsing for CSS classes
+Contributed by [Ramil Valitov](https://github.com/rvalitov)
+
+### The idea
+You can add one or several CSS classes to HTML elements to automatically invoke "jQuery.dotdotdot functionality" and some extra features. It allows to use jQuery.dotdotdot only by adding appropriate CSS classes without JS programming.
+
+### Available classes and their description
+* dot-ellipsis - automatically invoke jQuery.dotdotdot to this element. This class must be included if you plan to use other classes below.
+* dot-resize-update - automatically update if window resize event occurs. It's equivalent to option `watch:'window'`.
+* dot-timer-update - automatically update at regular intervals using setInterval. It's equivalent to option `watch:true`.
+* dot-load-update - automatically update after the window has beem completely rendered. Can be useful if your content is generated dynamically using using JS and, hence, jQuery.dotdotdot can't correctly detect the height of the element before it's rendered completely.
+* dot-height-XXX - available height of content area in pixels, where XXX is a number, e.g. can be `dot-height-35` if you want to set maximum height for 35 pixels. It's equivalent to option `height:'XXX'`.
+
+### Usage examples
+*Adding jQuery.dotdotdot to element*
+
+    <div class="dot-ellipsis">
+    <p>Lorem Ipsum is simply dummy text.</p>
+    </div>
+
+*Adding jQuery.dotdotdot to element with update on window resize*
+
+    <div class="dot-ellipsis dot-resize-update">
+    <p>Lorem Ipsum is simply dummy text.</p>
+    </div>
+
+*Adding jQuery.dotdotdot to element with predefined height of 50px*
+
+    <div class="dot-ellipsis dot-height-50">
+    <p>Lorem Ipsum is simply dummy text.</p>
+    </div>
+
+*/
+
+jQuery(function($) {
+    //We only invoke jQuery.dotdotdot on elements that have dot-ellipsis class
+    $(".dot-ellipsis").each(function() {
+        //Checking if update on window resize required
+        var watch_window = $(this).hasClass("dot-resize-update");
+
+        //Checking if update on timer required
+        var watch_timer = $(this).hasClass("dot-timer-update");
+
+        //Checking if height set
+        var height = 0;
+        var classList = $(this).attr('class').split(/\s+/);
+        $.each(classList, function(index, item) {
+            var matchResult = item.match(/^dot-height-(\d+)$/);
+            if (matchResult !== null)
+                height = Number(matchResult[1]);
+        });
+
+        //Invoking jQuery.dotdotdot
+        var x = {};
+        if (watch_timer)
+            x.watch = true;
+        if (watch_window)
+            x.watch = 'window';
+        if (height > 0)
+            x.height = height;
+        $(this).dotdotdot(x);
+    });
+});
+
+//Updating elements (if any) on window.load event
+jQuery(window).on('load', function() {
+    jQuery(".dot-ellipsis.dot-load-update").trigger("update.dot");
+});

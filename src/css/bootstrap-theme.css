@@ -6,8 +6,8 @@
 
 
 /*!
- * Generated using the Bootstrap Customizer (https://getbootstrap.com/customize/?id=1b452595377fce077b42bd17bc4d5b6e)
- * Config saved to config.json and https://gist.github.com/1b452595377fce077b42bd17bc4d5b6e
+ * Generated using the Bootstrap Customizer (https://getbootstrap.com/customize/?id=35acbe3921c72f11e49b44feb9e16bdc)
+ * Config saved to config.json and https://gist.github.com/35acbe3921c72f11e49b44feb9e16bdc
  */
 
 
@@ -673,14 +673,17 @@ fieldset[disabled] .btn-danger.active {
 
 .disclaimer-footer {
 	font-weight: bold;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	background-color: #eee;
+	margin-top: 25px;
 }
 
+.disclaimer-footer > div > p {
+    margin:0px;
+}
 
 /* Banner */
-
 .banner {
 	background-color: #c02c38;
 	padding-top: 10px;
@@ -729,73 +732,9 @@ fieldset[disabled] .btn-danger.active {
 	padding-right: 10px;
 }
 
-
-/* Map */
-
-#map-container,
-#map-canvas {
-	height: 470px;
-	margin-top: 15px;
-}
-
-.map-video iframe {
-    display: block
-}
-.map-video-image {
-    display: none
-}
-
-@media(min-width:768px) {
-    #map-container {
-        position: relative;
-        background-color: #eee;
-        width: 100%;
-        height: 500px;
-        margin: 0;
-        padding: 0
-    }
-    #map-canvas {
-        width: 100%;
-        height: 500px
-    }
-    .map-video iframe {
-        width: 560px;
-        height: 315px
-    }
-    .map-video iframe {
-        display: block
-    }
-} 
-
-#error-note {
-	display: none;
-	position: absolute;
-	top: 0;
-	width: 100%;
-	z-index: 1000
-}
-
-.row.video-box {
-	padding-right: 40px;
-	padding-left: 40px
-}
-
-.row > .video {
+.row>.video {
 	padding-right: 5px;
 	padding-left: 5px
-}
-
-.video-btn {
-	margin-top: 24px;
-	margin-bottom: 10px;
-	padding-left: 20px
-}
-
-.subscribe {
-	padding: 10px;
-	padding-top: 0;
-	cursor: pointer;
-	width: 200px
 }
 
 .thumbnail {
@@ -806,3 +745,159 @@ fieldset[disabled] .btn-danger.active {
 .caption {
 	height: 60px;
 }
+
+.yt-sub {
+	padding-top: 22px;
+	padding-right: 10px;
+}
+
+.yt-sub > p {
+	margin-bottom: 4px;
+}
+
+/* Map */
+
+#map-container,
+#map-canvas {
+	height: 400px;
+	margin-top: 15px;
+}
+
+.map-video iframe {
+	display: block
+}
+
+.map-video-image {
+	display: none
+}
+
+@media(min-width:768px) {
+	#map-container {
+		position: relative;
+		background-color: #eee;
+		width: 100%;
+		height: 500px;
+		margin: 0;
+		padding: 0
+	}
+	#map-canvas {
+		width: 100%;
+		height: 500px
+	}
+	.map-video iframe {
+		width: 560px;
+		height: 315px
+	}
+	.map-video iframe {
+		display: block
+	}
+}
+
+#error-note {
+    display: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    background-color: #c02c38;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    color: white;
+    text-align: center;
+}
+}
+
+.subscribe {
+	padding: 10px;
+	padding-top: 0;
+	cursor: pointer;
+	width: 200px
+}
+
+
+/* Loading */
+#loading {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+	background-color: #c02c38;
+	margin: auto;
+}
+
+
+/* https://github.com/lukehaas/css-loaders */
+
+.loader,
+.loader:before,
+.loader:after {
+	border-radius: 50%;
+	width: 2.5em;
+	height: 2.5em;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation: load7 1.8s infinite ease-in-out;
+	animation: load7 1.8s infinite ease-in-out;
+}
+
+.loader {
+	color: #ffffff;
+	font-size: 10px;
+	margin: 80px auto;
+	position: relative;
+	text-indent: -9999em;
+	-webkit-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-animation-delay: -0.16s;
+	animation-delay: -0.16s;
+}
+
+.loader:before,
+.loader:after {
+	content: '';
+	position: absolute;
+	top: 0;
+}
+
+.loader:before {
+	left: -3.5em;
+	-webkit-animation-delay: -0.32s;
+	animation-delay: -0.32s;
+}
+
+.loader:after {
+	left: 3.5em;
+}
+
+@-webkit-keyframes load7 {
+	0%,
+	80%,
+	100% {
+		box-shadow: 0 2.5em 0 -1.3em;
+	}
+	40% {
+		box-shadow: 0 2.5em 0 0;
+	}
+}
+
+@keyframes load7 {
+	0%,
+	80%,
+	100% {
+		box-shadow: 0 2.5em 0 -1.3em;
+	}
+	40% {
+		box-shadow: 0 2.5em 0 0;
+	}
+}
+
+/*body, html {
+	overflow: hidden;
+} */
