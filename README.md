@@ -1,5 +1,6 @@
 # Tom Scott's Amazing Places Map
 ![Screenshot](screenshot-2017-08-03.png)
+
 An unofficial website for Tom Scott's amazing places video series
 
 ### Dependencies
