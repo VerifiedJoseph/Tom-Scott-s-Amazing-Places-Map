@@ -1,10 +1,16 @@
 {
   "details": {
     "created": "2016-03-14",
-    "last_mod": "2017-09-34"
+    "last_mod": "2017-09-18"
   },
   "videos": [
     {
+      "title": "Rotary Jails and Accidental Amputations",
+      "lat": "40.0438257",
+      "long": "-86.9022273",
+      "added": "2017-09-18"
+    },
+	{
       "title": "A Nuclear Waste Dump You Can Walk On: Weldon Spring, Missouri",
       "id": "PB7HT3BZLzM",
       "lat": "38.695893",
