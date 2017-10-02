@@ -6,10 +6,7 @@ jQuery(function ($) {
 	
 	var map,
 		markers = [], // Array of map markers 
-		infoWindow,
-		url = $("#map-container").attr("data-url"),
-		currentMarker = -1, // ID of the currently open info window (marker ID)
-		mapCenter;
+		infoWindow;
 
 	/**
 	* Create a map from the JSON data
@@ -71,7 +68,7 @@ jQuery(function ($) {
 		var html,
 			i;
 
-		 // Loop through each video and add it to the grid
+		// Loop through each video and add it to the grid
 		for (i = 0; i < Object.keys(videos).length; i += 1) {
 
 			// http://shoelace.io/#7084dfaae9239b22106fd5d7ca503f17
