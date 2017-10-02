@@ -1,10 +1,17 @@
 {
   "details": {
     "created": "2016-03-14",
-    "last_mod": "2017-09-18"
+    "last_mod": "2017-10-02"
   },
   "videos": [
     {
+      "title": "The Reaction Ferries of Basel: What Have We Missed?",
+      "id": "b6utGZQ9Sks",
+      "lat": "47.556155",
+      "long": "7.593592",
+      "added": "2017-10-02"
+    },
+	{
       "title": "Rotary Jails and Accidental Amputations",
       "id": "-DGXHMOhXAw",
       "lat": "40.0438257",
