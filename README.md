@@ -3,10 +3,10 @@
 
 An unofficial website for Tom Scott's amazing places video series
 
-### Dependencies
+## Dependencies
 - [Google Maps JavaScript API (version 3)](https://developers.google.com/maps/documentation/javascript/)
 - [JQuery 3.2.1](https://jquery.com/)
-- [JQuery.dotdotdot](https://github.com/FrDH/jQuery.dotdotdot) with the edits from [pull request #124](https://github.com/FrDH/jQuery.dotdotdot/pull/124/files).
+- [JQuery.dotdotdot 3.0.5](https://github.com/FrDH/jQuery.dotdotdot)
 
 ## License
 
