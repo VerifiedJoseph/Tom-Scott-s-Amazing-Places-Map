@@ -1,7 +1,7 @@
 # Tom Scott's Amazing Places Map
 ![Screenshot](screenshot-2017-08-03.png)
 
-An unofficial website for Tom Scott's amazing places video series
+Unofficial website for Tom Scott's amazing places video series.
 
 ## Dependencies
 - [Google Maps JavaScript API (version 3)](https://developers.google.com/maps/documentation/javascript/)
