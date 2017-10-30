@@ -1,10 +1,17 @@
 {
   "details": {
     "created": "2016-03-14",
-    "last_mod": "2017-10-16"
+    "last_mod": "2017-10-30"
   },
   "videos": [
     {
+      "title": "The Story of Salvation Mountain",
+      "id": "4JAjIjXbe3Y",
+      "lat": "33.2541262",
+      "long": "-115.472521",
+      "added": "2017-10-30"
+    },
+	{
       "title": "Why California's Musical Road Sounds Terrible",
       "id": "Ef93WmlEho0",
       "lat": "34.7331127",
