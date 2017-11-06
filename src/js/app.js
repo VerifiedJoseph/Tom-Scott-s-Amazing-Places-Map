@@ -18,7 +18,7 @@ jQuery(function ($) {
 			mapOptions = { // Map Options
 				center: new google.maps.LatLng('54.9000', '25.3167'), // Default map location
 				zoom: 4, // Default zoom
-				maxZoom: 8,
+				maxZoom: 11,
 				streetViewControl: false,
 				mapTypeId: google.maps.MapTypeId.ROADMAP,
 				mapTypeControl: false
