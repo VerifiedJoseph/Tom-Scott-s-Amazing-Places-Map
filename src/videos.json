@@ -1,10 +1,17 @@
 {
   "details": {
     "created": "2016-03-14",
-    "last_mod": "2017-11-06"
+    "last_mod": "2017-11-20"
   },
   "videos": [
     {
+      "title": "The German Town That's Literally Breaking Apart ",
+      "id": "zOgle88sKro",
+      "lat": "47.881389",
+      "long": "7.731389",
+      "added": "2017-11-20"
+    },
+	{
       "title": "The Lava Lamps That Help Keep The Internet Secure",
       "id": "1cUUfMeOijg",
       "lat": "37.7803628",
