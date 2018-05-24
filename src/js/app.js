@@ -45,7 +45,7 @@ jQuery(function ($) {
 				return function () {
 					
 					// info window content
-					var content = '<div class="map-video"><iframe src="https://www.youtube.com/embed/' + locations[i].id + '" frameborder="0" allowfullscreen></iframe></div>';
+					var content = '<div class="map-video"><iframe src="https://www.youtube-nocookie.com/embed/' + locations[i].id + '" frameborder="0" allowfullscreen></iframe></div>';
 					
 					infoWindow.setContent(content);
 					infoWindow.open(map, marker);
