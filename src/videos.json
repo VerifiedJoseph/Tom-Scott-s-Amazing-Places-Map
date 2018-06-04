@@ -1,10 +1,17 @@
 {
   "details": {
     "created": "2016-03-14",
-    "last_mod": "2018-04-28"
+    "last_mod": "2018-06-04"
   },
   "videos": [
     {
+      "title": "The Town That Was Burned for Science: Aultsville",
+      "id": "DWYthXD14pw",
+      "lat": "44.9553554",
+      "long": "-75.0291221",
+      "added": "2018-06-04"
+    },
+	{
       "title": "The US-Canada Border Splits This Road Down The Middle",
       "id": "EocJm3Dry4E",
       "lat": "45.0058298",
