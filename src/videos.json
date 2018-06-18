@@ -1,10 +1,17 @@
 {
   "details": {
     "created": "2016-03-14",
-    "last_mod": "2018-06-04"
+    "modified": "2018-06-18"
   },
   "videos": [
     {
+      "title": "Freezing 200,000 Tons of Lethal Arsenic Dust",
+      "id": "E4nZDSLdIiM",
+      "lat": "62.499722",
+      "long": "-114.358612",
+      "added": "2018-06-18"
+    },
+	{
       "title": "The Town That Was Burned for Science: Aultsville",
       "id": "DWYthXD14pw",
       "lat": "44.9553554",
