@@ -1,10 +1,17 @@
 {
   "details": {
     "created": "2016-03-14",
-    "modified": "2018-06-18"
+    "modified": "2018-06-25"
   },
   "videos": [
     {
+      "title": "The New Highway to the Arctic Ocean",
+      "id": "frhMomcKT9o",
+      "lat": "69.447327",
+      "long": "-133.035156",
+      "added": "2018-06-25"
+    },
+	{
       "title": "Freezing 200,000 Tons of Lethal Arsenic Dust",
       "id": "E4nZDSLdIiM",
       "lat": "62.499722",
