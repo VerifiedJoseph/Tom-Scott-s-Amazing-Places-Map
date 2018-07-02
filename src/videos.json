@@ -1,10 +1,17 @@
 {
   "details": {
     "created": "2016-03-14",
-    "modified": "2018-06-25"
+    "modified": "2018-07-02"
   },
   "videos": [
     {
+      "title": "Watching for Nuclear Attack at the Top of the World",
+      "id": "Et3YW_qS_1o",
+      "lat": "69.443259",
+      "long": "-133.0012387",
+      "added": "2018-07-02"
+    },
+	{
       "title": "The New Highway to the Arctic Ocean",
       "id": "frhMomcKT9o",
       "lat": "69.447327",
