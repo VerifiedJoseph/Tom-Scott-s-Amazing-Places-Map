@@ -1,9 +1,16 @@
 {
 	"details": {
 		"created": "2016-03-14",
-		"modified": "2019-06-03"
+		"modified": "2019-06-10"
 	},
 	"videos": [
+		{
+			"title": "The One-Lane Bridge Shared By Cars And Trains",
+			"id": "sstRJcaFU9U",
+			"lat": "-45.716873",
+			"long": "170.345833",
+			"added": "2019-06-10"
+		},
 		{
 			"title": "What Counts As The Steepest Street In The World?",
 			"id": "0MqtTlzde0g",
