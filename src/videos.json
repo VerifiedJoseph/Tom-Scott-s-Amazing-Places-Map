@@ -1,9 +1,16 @@
 {
 	"details": {
 		"created": "2016-03-14",
-		"modified": "2019-06-10"
+		"modified": "2019-06-24"
 	},
 	"videos": [
+		{
+			"title": "The World's First Solar Powered Train",
+			"id": "6Y4QGFte3T8",
+			"lat": "-28.6295971",
+			"long": "153.5854828",
+			"added": "2019-06-24"
+		},
 		{
 			"title": "The One-Lane Bridge Shared By Cars And Trains",
 			"id": "sstRJcaFU9U",
