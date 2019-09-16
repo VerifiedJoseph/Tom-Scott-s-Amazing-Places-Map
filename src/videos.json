@@ -1,9 +1,16 @@
 {
 	"details": {
 		"created": "2016-03-14",
-		"modified": "2019-09-09"
+		"modified": "2019-09-16"
 	},
 	"videos": [
+		{
+			"title": "The Toxic Pit With A $3 Admission Fee",
+			"id": "n-Ej2EtE744",
+			"lat": "46.0174252",
+			"long": "-112.5127862",
+			"added": "2019-09-16"
+		},
 		{
 			"title": "The Only Bit Of Louisiana's Coast That Isn't Sinking",
 			"id": "zFiNmEWXPPM",
