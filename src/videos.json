@@ -1,9 +1,16 @@
 {
 	"details": {
 		"created": "2016-03-14",
-		"modified": "2019-10-21"
+		"modified": "2019-12-16"
 	},
 	"videos": [
+		{
+			"title": "I Almost Learned To Fly In The World's Only Wingsuit Tunnel",
+			"id": "DpfrGZJyKmo",
+			"lat": "59.3488937",
+			"long": "17.9595593",
+			"added": "2019-12-16"
+		},
 		{
 			"title": "The Giant Art That Keeps Planes Quiet",
 			"id": "7dlLmeage2U",
