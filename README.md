@@ -5,7 +5,7 @@ Unofficial website for Tom Scott's [amazing places](https://www.youtube.com/play
 
 ## Dependencies
 - [Google Maps JavaScript API (version 3)](https://developers.google.com/maps/documentation/javascript/)
-- [JQuery 3.4.1](https://jquery.com/)
+- [JQuery 3.5.1](https://jquery.com/)
 - [JQuery.dotdotdot 3.2.3](https://github.com/FrDH/jQuery.dotdotdot)
 
 ## License
