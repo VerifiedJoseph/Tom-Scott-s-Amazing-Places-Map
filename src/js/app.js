@@ -73,7 +73,7 @@ jQuery(function ($) {
 
 			// http://shoelace.io/#7084dfaae9239b22106fd5d7ca503f17
 			html = '<div class="col-xs-6 col-sm-4 col-lg-2 video"><div class="thumbnail" data-map-id="' + i + '">'
-				+ '<img title="' + videos[i].title + '" class="video-thumbnail" src="https://i.ytimg.com/vi/' + videos[i].id + '/mqdefault.jpg" title="' + videos[i].title + '">' // Small screens
+				+ '<img title="' + videos[i].title + '" class="video-thumbnail" src="https://i.ytimg.com/vi/' + videos[i].id + '/mqdefault.jpg" title="' + videos[i].title + '" loading="lazy">' // Small screens
 				+ '<div title="' + videos[i].title + '" class="caption"><span>' + videos[i].title + '</span></div></div>';
 			$(".video-box").append(html);
 		}
